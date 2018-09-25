@@ -33,7 +33,16 @@ export default class frameware {
 		this.MaxWorldSize = { x, y }
 	}
 	orientate(command) {
-		console.log(command)
+		const orientations = ['N', 'E', 'S', 'W']
+		const option = orientations.findIndex(i => i === this.orientation)
+		if (command === 'R') {
+			const index = option === 3 ? 0 : option + 1
+			this.orientation = orientations[index]
+		}
+		if (command === 'L') {
+			const index = option === 0 ? 3 : option - 1
+			this.orientation = orientations[index]
+		}
 	}
 	move() {
 		// right now its always forward

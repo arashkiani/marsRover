@@ -52,4 +52,25 @@ describe('sanity check', () => {
 		expect(frameware.scent).toHaveLength(1)
 		expect(frameware.output).toBe('1 0 N')
 	})
+
+	test('Change orientation to right', () => {
+		frameware.worldSize = '0 0'
+		frameware.takeInCoordinates = '0 0 N'
+		frameware.takeInCommands = 'R'
+		expect(frameware.output).toBe('0 0 E')
+	})
+
+	test('Change orientation to Left', () => {
+		frameware.worldSize = '0 0'
+		frameware.takeInCoordinates = '0 0 N'
+		frameware.takeInCommands = 'L'
+		expect(frameware.output).toBe('0 0 W')
+	})
+
+	test('Change orientation to Right and Move Forward', () => {
+		frameware.worldSize = '1 1'
+		frameware.takeInCoordinates = '0 0 N'
+		frameware.takeInCommands = 'RF'
+		expect(frameware.output).toBe('0 1 E')
+	})
 })
