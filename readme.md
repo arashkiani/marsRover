@@ -3,10 +3,11 @@ Write a software to help _US Space Force_ takeover Mars
 
 # Tests
 
-Coordinations | Commands | Output
-1 1 E | RFRFRFRF | 1 1 E
-3 2 N | FRRFLLFFRRFLL | 3 3 N LOST
-0 3 W | LLFFFLFLFL | 2 3 S
+| Coordinations | Commands      | Output     |
+| --------------|---------------|------------|
+| 1 1 E         | RFRFRFRF      | 1 1 E      |
+| 3 2 N         | FRRFLLFFRRFLL | 3 3 N LOST |
+| 0 3 W         | LLFFFLFLFL    | 2 3 S      |
 
 # Here is how I assume it should be done
 
@@ -16,13 +17,13 @@ Coordinations | Commands | Output
     * Frameware: This will be loaded into Rover and can be updated with new functionalities later on
 * Initiate the project and install tools :)
 
-# OS Functionalities
+## OS Functionalities
 
 * Set World size
 * Update frameware
 * Keep record of robot scents, in order to prevent further incidents 
 
-# Frameware Functionalities
+## Frameware Functionalities
 
 * controls : input(orientation, coordinate, commands), scent of other robots, lost flag
 * interpreter to convert text to workable input types

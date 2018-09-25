@@ -1,11 +1,11 @@
 type ActionType = { coordinates: string, commands: string }
 
 export default class RoverLanucher {
-	Driver = false
+	Frameware = false
 	worldSize = '0 0'
 	scent: Array<string> = []
 	deploy(coordinates, commands) {
-		if (!this.Driver) {
+		if (!this.Frameware) {
 			throw new Error('This Rover is not bootable please install driver')
 		}
 		if (commands.length >= 100) {
@@ -14,8 +14,8 @@ export default class RoverLanucher {
 		if (this.worldSize === '0 0') {
 			throw new Error('we cant launch rover, please set world size')
 		}
-		const rover = new this.Driver()
-		// this way we can update Driver without loosing Scent
+		const rover = new this.Frameware()
+		// this way we can update Frameware without loosing Scent
 		rover.scent = this.scent
 		rover.takeInCoordinates = coordinates
 		rover.worldSize = this.worldSize

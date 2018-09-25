@@ -67,7 +67,7 @@ export default class frameware {
 				x += action
 				break
 			default:
-				console.log('Command not recognised')
+				break
 		}
 		this.ShouldRoverChangeLocation(this.coordinate, { x, y })
 	}
