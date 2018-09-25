@@ -10,6 +10,8 @@ export default class frameware {
 	coordinate = { x: 0, y: 0 }
 	commands = []
 	lost = false
+	scent = []
+	MaxWorldSize = { x: 0, y: 0 }
 	set takeInCoordinates(input) {
 		const [x, y, orientation] = input.toUpperCase().split(' ')
 		const coordinates = {
@@ -20,9 +22,15 @@ export default class frameware {
 		this.coordinate = coordinates
 	}
 	set takeInCommands(commands) {
+		// reset lost flag
+		this.lost = false
 		// take in commands and make sure its not  more than 100
 		this.commands = commands.slice(0, 99).split('')
 		this.execute()
+	}
+	set worldSize(input) {
+		const [x, y] = input.split(' ')
+		this.MaxWorldSize = { x, y }
 	}
 	orientate(command) {
 		console.log(command)
@@ -46,7 +54,7 @@ export default class frameware {
 			default:
 				console.log('Command not recognised')
 		}
-		this.coordinate = { x, y }
+		this.ShouldRoverChangeLocation(this.coordinate, { x, y })
 	}
 	execute() {
 		this.commands.forEach((command: string) => {
@@ -56,6 +64,23 @@ export default class frameware {
 				this.move()
 			}
 		})
+	}
+
+	ShouldRoverChangeLocation(current, next): void {
+		// Check if we know its dangerous
+		const danger = this.scent.includes(`${next.x} ${next.y}`)
+		if (!danger) {
+			if (
+				next.x > this.MaxWorldSize.x ||
+				next.x < 0 ||
+				next.y > this.MaxWorldSize.y ||
+				next.y < 0
+			) {
+				// If rover fall off declare it lost + add last location to blacklist
+				this.lost = true
+				this.scent.push(`${next.x} ${next.y}`)
+			} else this.coordinate = next
+		}
 	}
 
 	get output(): string {
