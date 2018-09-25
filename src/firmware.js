@@ -1,4 +1,4 @@
-export default class frameware {
+export default class firmware {
 	orientation = 'N'
 	coordinate = { x: 0, y: 0 }
 	commands = []
@@ -13,7 +13,7 @@ export default class frameware {
 		}
 		if (coordinates.x > 50 || coordinates.y > 50) {
 			throw new Error(
-				'This Rover cannot receive such coordinates Please update frameware'
+				'This Rover cannot receive such coordinates Please update firmware'
 			)
 		}
 		this.orientation = orientation

@@ -1,11 +1,11 @@
 import RoverLauncher from './roverLauncher'
-import Frameware from './frameware'
+import Firmware from './firmware'
 
 let roverLauncher
 describe('Check against the data', () => {
 	beforeEach(() => {
 		roverLauncher = new RoverLauncher()
-		roverLauncher.Frameware = Frameware
+		roverLauncher.Firmware = Firmware
 		roverLauncher.worldSize = '5 3'
 	})
 	test('rover deployed @ 1 1 E Move => 1 1 E', () => {
