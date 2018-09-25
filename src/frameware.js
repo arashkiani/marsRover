@@ -24,8 +24,38 @@ export default class frameware {
 		this.commands = commands.slice(0, 99).split('')
 		this.execute()
 	}
+	orientate(command) {
+		console.log(command)
+	}
+	move() {
+		// right now its always forward
+		let { x, y } = this.coordinate
+		switch (this.orientation) {
+			case 'N':
+				x += 1
+				break
+			case 'S':
+				x -= 1
+				break
+			case 'W':
+				y -= 1
+				break
+			case 'E':
+				y += 1
+				break
+			default:
+				console.log('Command not recognised')
+		}
+		this.coordinate = { x, y }
+	}
 	execute() {
-		console.log('start calculations')
+		this.commands.forEach((command: string) => {
+			if (['R', 'L'].includes(command)) {
+				this.orientate(command)
+			} else if (['F'].includes(command) && !this.lost) {
+				this.move()
+			}
+		})
 	}
 
 	get output(): string {
