@@ -11,6 +11,11 @@ export default class frameware {
 			x: parseInt(x, 10),
 			y: parseInt(y, 10),
 		}
+		if (coordinates.x > 50 || coordinates.y > 50) {
+			throw new Error(
+				'This Rover cannot receive such coordinates Please update frameware'
+			)
+		}
 		this.orientation = orientation
 		this.coordinate = coordinates
 	}
@@ -37,21 +42,29 @@ export default class frameware {
 			this.orientation = orientations[index]
 		}
 	}
-	move() {
-		// right now its always forward
+	move(command) {
 		let { x, y } = this.coordinate
+		let action = 0
+		// right now its always forward
+		if (command === 'F') {
+			action = 1
+		}
+		// I think I'm starting to over think this...
+		if (command === 'B') {
+			action = -1
+		}
 		switch (this.orientation) {
 			case 'N':
-				x += 1
+				y += action
 				break
 			case 'S':
-				x -= 1
+				y -= action
 				break
 			case 'W':
-				y -= 1
+				x -= action
 				break
 			case 'E':
-				y += 1
+				x += action
 				break
 			default:
 				console.log('Command not recognised')
@@ -62,8 +75,8 @@ export default class frameware {
 		this.commands.forEach((command: string) => {
 			if (['R', 'L'].includes(command)) {
 				this.orientate(command)
-			} else if (['F'].includes(command) && !this.lost) {
-				this.move()
+			} else if (['F', 'H', 'B'].includes(command) && !this.lost) {
+				this.move(command)
 			}
 		})
 	}
