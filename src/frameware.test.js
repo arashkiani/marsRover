@@ -67,10 +67,31 @@ describe('sanity check', () => {
 		expect(frameware.output).toBe('0 0 W')
 	})
 
-	test('Change orientation to Right and Move Forward', () => {
+	test('Change orientation to Right & Move Forward', () => {
 		frameware.worldSize = '1 1'
 		frameware.takeInCoordinates = '0 0 N'
 		frameware.takeInCommands = 'RF'
 		expect(frameware.output).toBe('0 1 E')
+	})
+
+	test('Change orientation to Left & Move Forward', () => {
+		frameware.worldSize = '1 1'
+		frameware.takeInCoordinates = '0 0 N'
+		frameware.takeInCommands = 'LF'
+		expect(frameware.output).toBe('0 0 W LOST')
+	})
+
+	test('Change orientation to 2 x LEFT & Move Forward', () => {
+		frameware.worldSize = '1 1'
+		frameware.takeInCoordinates = '0 0 N'
+		frameware.takeInCommands = 'LLF'
+		expect(frameware.output).toBe('0 0 S LOST')
+	})
+
+	test('Change orientation to 3 x RIGHT & Move Forward', () => {
+		frameware.worldSize = '1 1'
+		frameware.takeInCoordinates = '0 0 N'
+		frameware.takeInCommands = 'RRRF'
+		expect(frameware.output).toBe('0 0 W LOST')
 	})
 })
