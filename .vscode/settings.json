@@ -1,0 +1,18 @@
+{
+    "files.watcherExclude": {
+        ".vscode/": true,
+		"./node_modules/": true,
+		"./.git/": true
+    },
+    "search.exclude": {
+        "./node_modules": true,
+		"dist/**": true,
+		"./.git": true
+    },
+    "eslint.enable": true,
+    "eslint.provideLintTask": true,
+    "eslint.autoFixOnSave": true,
+    "prettier.eslintIntegration": true,
+    "editor.formatOnType": false,
+    "editor.formatOnSave":false,    
+}

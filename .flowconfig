@@ -1,0 +1,14 @@
+[ignore]
+.*/node_modules
+.*/*.test.*\.js
+.*/coverage
+
+[include]
+
+[libs]
+flow-typed
+[lints]
+
+[options]
+all=true
+[strict]

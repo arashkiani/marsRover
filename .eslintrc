@@ -1,0 +1,33 @@
+{
+    "parser": "babel-eslint",
+    "extends": [
+      "airbnb-base",
+      "plugin:flowtype/recommended",
+      "plugin:prettier/recommended",
+      "prettier/flowtype"
+    ],
+    "plugins": [
+      "flowtype",
+      "jest",
+      "prettier",
+      "flowtype-errors"
+    ],
+    "env": {
+      "jest": true
+    },
+    "rules": {
+      "prettier/prettier": "error",
+      "flowtype-errors/show-errors": "error",
+      "flowtype/use-flow-type": 1,
+      "flowtype/valid-syntax": 2,
+      "flowtype/no-types-missing-file-annotation": 0,
+      "jest/no-disabled-tests": 0,
+      "jest/no-focused-tests": "error",
+      "jest/no-identical-title": "error",
+      "jest/prefer-to-have-length": "warn",
+      "jest/valid-expect": "error",
+      "no-console": 0,
+      "no-debugger": "warn",
+      "lines-between-class-members": 0
+	}
+}
